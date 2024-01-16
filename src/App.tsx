@@ -1,24 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Heading from './Components/Heading/heading/Heading';
+import Board from './Components/Board/Board';
+import { useSelector } from 'react-redux';
+import { rootState } from './Components/interface';
+
+
+interface Words {
+  words: String[]
+}
 
 function App() {
+ //6x5 board
+ const board = useSelector((state:rootState) => state.board.board)
+ 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Heading type="h1" text="Wordiee"/>
+      <div className="board-container">
+      <Board board={board}/>
+      </div>
     </div>
   );
 }
